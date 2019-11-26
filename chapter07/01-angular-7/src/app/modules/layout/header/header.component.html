@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span [routerLink]="['/']">ApressNote-PWA</span>
+  <span class="space-between"></span>
+  <button mat-icon-button [mat-menu-trigger-for]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/']">Home</button>
+  <button mat-menu-item [routerLink]="['/user']">
+    {{ (user$ | async) ? "Profile" : "Login" }}
+  </button>
+  <button mat-menu-item [routerLink]="['/notes/add']">Add note</button>
+</mat-menu>

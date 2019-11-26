@@ -1,0 +1,24 @@
+.media-container {
+  .videos {
+    display: flex;
+    flex-direction: column;
+    @media only screen and (min-width: 768px) {
+      flex-direction: row;
+    }
+  }
+  .video {
+    flex-basis: 100%;
+    @media only screen and (min-width: 768px) {
+      flex-basis: 49.5%;
+    }
+    video {
+      width: 100%;
+    }
+  }
+  button {
+    margin: 0.5rem;
+  }
+  .buttons > a {
+    display: none;
+  }
+}

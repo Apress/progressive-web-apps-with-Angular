@@ -1,0 +1,26 @@
+{
+  "total": {
+    "label": "Total Donation",
+    "amount": { "currency": "USD", "value": "4.99" }
+  },
+  "displayItems": [
+    {
+      "label": "What I recieve",
+      "amount": { "currency": "USD", "value": "4.49" }
+    },
+    {
+      "label": "Tax",
+      "amount": { "currency": "USD", "value": "0.5" }
+    }
+  ],
+  "shippingOptions": [
+    {
+      "id": "economy",
+      "label": "Economy Shipping (5-7 Business Days)",
+      "amount": {
+        "currency": "USD",
+        "value": "0"
+      }
+    }
+  ]
+}

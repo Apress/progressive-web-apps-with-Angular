@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+.appress-pwa-note {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  height: 100%;
+}
+
+.main {
+  flex: 1;
+  padding: 0 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+mat-card {
+  margin: 1.5em auto;
+}
+
+mat-toolbar-row {
+  justify-content: space-between;
+}
+
+.error {
+  color: red;
+  font-size: 0.7rem;
+  padding: 0.5rem;
+}

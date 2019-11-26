@@ -1,0 +1,43 @@
+<mat-card *ngIf="user$ | async as user">
+  <mat-card-title>
+    Hello {{user.email}}
+  </mat-card-title>
+  <mat-card-subtitle>
+    ID: {{user.uid}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <button mat-raised-button color="primary" (click)="logOut()">Logout</button>
+    <button mat-raised-button color="accent" [routerLink]="'/notes'">Your notes</button>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="text-center" *ngIf="!(user$ | async)">
+  <mat-card-title>
+    Access to your notes
+  </mat-card-title>
+  <mat-card-subtitle class="error" *ngIf="errorMessages$ | async as errorMessage">
+    {{ errorMessage }}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="login-container" [formGroup]="loginForm">
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" formControlName="email" required>
+        <mat-error *ngIf="loginForm.get('email').invalid">{{getErrorMessage('email', 'email')}}</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="loginForm.get('password').invalid">{{getErrorMessage('password')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+  </mat-card-content>
+  <mat-card-content><br>----- OR -----<br><br></mat-card-content>
+  <mat-card-content>
+    <button mat-raised-button color="accent" (click)="signUp()">Sign Up</button>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar *ngIf="isLoading$ | async" mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

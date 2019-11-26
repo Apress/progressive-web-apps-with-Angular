@@ -1,0 +1,14 @@
+<div class="note-container" [formGroup]="noteForm">
+  <mat-form-field>
+    <input matInput placeholder="Enter your title" formControlName="title" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <textarea matInput placeholder="Leave a comment" formControlName="content" required cdkTextareaAutosize></textarea>
+  </mat-form-field>
+</div>
+<br>
+<br>
+<div class="text-right">
+  <button mat-raised-button color="primary" (click)="addNote()">Save</button>
+</div>

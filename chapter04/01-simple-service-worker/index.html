@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apress Simple Service Worker Registration</title>
+</head>
+
+<body>
+    <div style="text-align: center; padding: 3rem">
+        <h1>Apress Simple Service Worker Registartion</h1>
+    </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/service-worker.js')
+                .then(registration => { // registration object
+                    console.log('Service worker is registered', registration);
+                })
+                .catch(e => {
+                    console.error('Something went wrong while registaring service worker.')
+                });
+        }
+    </script>
+</body>
+
+</html>

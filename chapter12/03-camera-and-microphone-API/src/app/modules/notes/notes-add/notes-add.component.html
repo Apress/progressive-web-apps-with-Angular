@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-title>New Note</mat-card-title>
+  <mat-card-subtitle
+    class="error"
+    *ngIf="(errorMessages$ | async) as errorMessage"
+  >
+    {{ errorMessage }}
+  </mat-card-subtitle>
+  <mat-card-content>
+    <app-note-form
+      [loading]="loading$ | async"
+      (saveNote)="onSaveNote($event)"
+      (sendError)="onSendError($event)"
+    ></app-note-form>
+
+    <div class="media-container" *ngIf="isMediaRecorderSupported">
+      <h1>Add video with audio Note</h1>
+      <div class="videos">
+        <div class="video">
+          <h2>LIVE STREAM</h2>
+          <video #videoOutput autoplay muted></video>
+        </div>
+        <div class="video">
+          <h2>RECORDED STREAM</h2>
+          <video #recorded autoplay loop></video>
+        </div>
+      </div>
+      <div class="buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="record()"
+          *ngIf="disabled.record"
+        >
+          Start Recording
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="stop()"
+          *ngIf="disabled.stop"
+        >
+          Stop Recording
+        </button>
+        <button
+          mat-raised-button
+          color="secondary"
+          (click)="play()"
+          *ngIf="disabled.play"
+        >
+          Play Recording
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="download()"
+          *ngIf="disabled.download"
+        >
+          Download Recording
+        </button>
+        <a #downloadLink href="">Download Link</a>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

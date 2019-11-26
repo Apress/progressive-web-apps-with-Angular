@@ -1,0 +1,22 @@
+{
+  "name": "01-simple-service-worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "service-worker.js",
+  "scripts": {
+    "start": "http-server -p 8080 -c-1",
+    "test": "jest",
+    "audit": "node lighthouse-chrome-launcher.js",
+    "audit:headless": "node lighthouse-puppeteer.js"
+  },
+  "author": "Majid Hajian",
+  "license": "ISC",
+  "dependencies": {
+    "chrome-launcher": "^0.10.5",
+    "http-server": "^0.11.1",
+    "jest": "^23.6.0",
+    "lighthouse": "^4.0.0-alpha.2-3.2.1",
+    "puppeteer": "^1.11.0",
+    "service-worker-mock": "^1.10.2"
+  }
+}

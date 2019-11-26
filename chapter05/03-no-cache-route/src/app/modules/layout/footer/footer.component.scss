@@ -1,0 +1,19 @@
+footer{
+    background: #3f51b5;
+    color: #fff;
+    display: flex;
+    box-sizing: border-box;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    white-space: nowrap;
+}
+.copyright {
+    text-align: center;
+}
+.addNote {
+ position: fixed;
+ bottom: 2rem;
+ right: 1rem;
+ color: #fff;
+}

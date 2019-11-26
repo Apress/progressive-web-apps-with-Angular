@@ -1,0 +1,32 @@
+<div *ngIf="note; else: spinner">
+  <mat-card *ngIf="isEdit">
+    <mat-card-subtitle
+      class="error"
+      *ngIf="(errorMessages$ | async) as errorMessage"
+    >
+      {{ errorMessage }}
+    </mat-card-subtitle>
+    <mat-card-content>
+      <app-note-form
+        [note]="note"
+        (saveNote)="saveNote($event)"
+        (sendError)="sendError($event)"
+      ></app-note-form>
+    </mat-card-content>
+  </mat-card>
+
+  <app-note-card
+    *ngIf="!isEdit"
+    [note]="note"
+    [loading]="isDbLoading$ | async"
+  ></app-note-card>
+
+  <button mat-raised-button color="accent" (click)="delete()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" (click)="edit()">
+    <mat-icon>edit</mat-icon>
+  </button>
+</div>
+
+<ng-template #spinner> <mat-spinner></mat-spinner> </ng-template>

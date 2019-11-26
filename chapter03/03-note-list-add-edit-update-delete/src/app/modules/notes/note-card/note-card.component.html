@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-title>{{ note.title }}</mat-card-title>
+  <mat-card-subtitle>{{ note.created_at | date:"short" }}</mat-card-subtitle>
+  <mat-card-content>{{ note.content }}</mat-card-content>
+  <mat-card-footer class="text-right">
+    <button color="primary" *ngIf="edit"><mat-icon>edit</mat-icon></button>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

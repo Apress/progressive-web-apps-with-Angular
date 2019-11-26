@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <span [routerLink]="['/']">ApressNote-PWA</span> <span class="space-between"></span>
+  <button mat-icon-button [mat-menu-trigger-for]="menu"><mat-icon>more_vert</mat-icon></button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item [routerLink]="['/']">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+  <button mat-menu-item [routerLink]="['/user']">
+    <mat-icon>voicemail</mat-icon>
+    {{ (user$ | async) ? 'Profile' : 'Login' }}
+  </button>
+  <button mat-menu-item [routerLink]="['/notes/add']">
+    <mat-icon>dialpad</mat-icon>
+    Add note
+  </button>
+  <button mat-menu-item (click)="requestPermission()" *ngIf="!(subscription$ | async) && (user$ | async) && isEnabled">
+    <mat-icon>notifications_on</mat-icon>
+    <span>Enable alerts</span>
+  </button>
+  <button mat-menu-item (click)="requestUnsubscribe()" *ngIf="(subscription$ | async)">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disabled alerts</span>
+  </button>
+</mat-menu>

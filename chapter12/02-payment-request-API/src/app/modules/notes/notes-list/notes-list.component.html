@@ -1,0 +1,19 @@
+<mat-card *ngIf="isAddToHomeScreenEnabled$ | async">
+  <mat-card-subtitle>Add To Home Screen</mat-card-subtitle>
+  <mat-card-content>
+    Do you know you can install this app on your homescreen?
+    <button mat-raised-button color="primary" (click)="showPrompt()">Show me</button>
+  </mat-card-content>
+</mat-card>
+
+<div *ngIf="notes$ | async as notes; else notFound">
+  <app-note-card *ngFor="let note of notes" [note]="note" [loading]="isDbLoading$ | async" [routerLink]="['/notes', note.id]">
+  </app-note-card>
+</div>
+<ng-template #notFound>
+  <mat-card>
+    <mat-card-title>
+      Either you have no notes
+    </mat-card-title>
+  </mat-card>
+</ng-template>
